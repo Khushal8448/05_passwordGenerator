@@ -13,7 +13,7 @@ function App() {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "0123456789";
-    if (charAllowed) str += "!@#$%^&*()_-+=<>?{}[]|/,";
+    if (charAllowed) str += "!@#$%^`&*()_-+=<>?{}[]|/,";
 
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1);
@@ -25,9 +25,10 @@ function App() {
 
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
-    passwordRef.current?.setSelectionRange(0, 100);
+    // passwordRef.current?.setSelectionRange(0, 100);
     window.navigator.clipboard.writeText(password);
   }, [password]);
+
   useEffect(
     () => passwordGenerator(),
     [length, numberAllowed, charAllowed, setPassword]
